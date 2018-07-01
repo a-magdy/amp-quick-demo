@@ -26,9 +26,9 @@ class App extends Component {
           <DataSearch
             className="datasearch"
             componentId="mainSearch"
-            dataField={["titles"]}
+            dataField={[ "artists", "keywords", "titles"]}
             queryFormat="and"
-            placeholder="Search for a book title or an author"
+            placeholder="Search for a titles and artists or keywords"
             innerClass={{
               "input": "searchbox",
               "list": "suggestionlist"
