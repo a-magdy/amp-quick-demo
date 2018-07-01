@@ -1,11 +1,11 @@
 {
-  "name": "booksearch",
-  "version": "0.1.0",
+  "name": "amp-quick-demo",
+  "version": "0.2.0",
   "private": true,
   "homepage": "https://a-magdy.github.io/amp-quick-demo",
   "devDependencies": {
     "gh-pages": "^1.2.0",
-    "react-scripts": "^1.0.17"
+    "react-scripts": "^1.1.4"
   },
   "dependencies": {
     "@appbaseio/reactivesearch": "^2.6.8",
