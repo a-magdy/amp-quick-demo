@@ -14,8 +14,10 @@ class App extends Component {
   render() {
     return (
       <ReactiveBase
-        app="good-books-ds"
-        credentials="nY6NNTZZ6:27b76b9f-18ea-456c-bc5e-3a5263ebc63d"
+        app="bands"
+        type="_doc"
+        url="https://amp.a-magdy.me"
+        // url="http://localhost:9200"
       >
         <div className="navbar">
           <div className="logo">
@@ -24,7 +26,7 @@ class App extends Component {
           <DataSearch
             className="datasearch"
             componentId="mainSearch"
-            dataField={["original_title", "original_title.search", "authors", "authors.search"]}
+            dataField={["titles"]}
             queryFormat="and"
             placeholder="Search for a book title or an author"
             innerClass={{
@@ -38,7 +40,7 @@ class App extends Component {
         </div>
         <div className={"display"}>
           <div className={"leftSidebar"}>
-            <SingleRange
+            {/* <SingleRange
               componentId="ratingsFilter"
               dataField="average_rating_rounded"
               title="Book Ratings"
@@ -52,58 +54,58 @@ class App extends Component {
                 and: "mainSearch"
               }}
               filterLabel="Ratings"
-            />
+            /> */}
             <RangeSlider
               componentId="publishFilter"
-              dataField="original_publication_year"
+              dataField="publishedYear"
               title="Year of Publication"
               filterLabel="published"
               range={{
-                start: 1970,
-                end: 2017
+                start: 1945,
+                end: 2018
               }}
               rangeLabels={{
-                start: "1970",
-                end: "2017"
+                start: "1945",
+                end: "2018"
               }}
-              interval={2}
+              interval={1}
             />
             <MultiList
-              componentId="authorFilter"
-              dataField="authors.raw"
-              title="Authors"
+              componentId="locationFilter"
+              dataField="location.raw"
+              title="Locations"
               size={1000}
               showCheckbox={false}
               className="authors"
               innerClass={{
                 "list": "author-list"
               }}
-              placeholder="Filter by author name"
-              filterLabel="Authors"
+              placeholder="Filter by location name"
+              filterLabel="Locations"
             />
           </div>
           <div className={"mainBar"}>
             <SelectedFilters />
             <ResultCard
               componentId="results"
-              dataField="original_title"
+              dataField="titles"
               react={{
-                "and": ["mainSearch", "ratingsFilter", "publishFilter", "authorFilter"]
+                "and": ["mainSearch", "ratingsFilter", "publishFilter", "locationFilter"]
               }}
-              pagination={true}
-              size={8}
-              sortOptions={[
-                { dataField: "average_rating", sortBy: "desc", label: "Ratings (High to low)" },
-                { dataField: "original_title.raw", sortBy: "asc", label: "Title A->Z"},
-                { dataField: "original_title.raw", sortBy: "desc", label: "Title Z->A"}
-              ]}
+              pagination={false}
+              size={20}
+              // sortOptions={[
+              //   { dataField: "average_rating", sortBy: "desc", label: "Ratings (High to low)" },
+              //   { dataField: "original_title.raw", sortBy: "asc", label: "Title A->Z"},
+              //   { dataField: "original_title.raw", sortBy: "desc", label: "Title Z->A"}
+              // ]}
               onData={(res)=>(
                 {
-                  "image": res.image,
-                  "title": res.original_title || " ",
-                  "description":  res.average_rating + " ★ " +
-                  "<span style='float:right;margin-right:5px;'>Pub: " + res.original_publication_year + "</span><br/><br/><div class='result-author' title='" + res.authors + "'>by " + res.authors + "</div>",
-                  "url": "https://google.com/search?q=" + res.original_title
+                  "image": "https://source.unsplash.com/random",
+                  "title": res.titles || " ",
+                  "description":  /*res.average_rating + " ★ " +*/
+                  "<span style='float:right;margin-right:5px;'>Pub: " + res.publishedYear+ "</span><br/><br/><div class='result-author' title='" + res.artists + "'>by " + res.artists + "</div>",
+                  "url": "https://google.com/search?q=" + res.titles
                 }
               )}
               className="result-data"
