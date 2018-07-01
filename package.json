@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://a-magdy.github.io/amp-quick-demo",
   "devDependencies": {
-    "gh-pages": "^1.1.0",
+    "gh-pages": "^1.2.0",
     "react-scripts": "^1.0.17"
   },
   "dependencies": {
