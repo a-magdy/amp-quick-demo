@@ -26,9 +26,9 @@ class App extends Component {
           <DataSearch
             className="datasearch"
             componentId="mainSearch"
-            dataField={[ "artists", "keywords", "titles"]}
+            dataField={[ "title", "alternativeTitle", "artist", "performer", "band" ]}
             queryFormat="and"
-            placeholder="Search for a titles and artists or keywords"
+            placeholder="Search for a titles and artists or bands"
             innerClass={{
               "input": "searchbox",
               "list": "suggestionlist"
@@ -57,7 +57,7 @@ class App extends Component {
             /> */}
             <RangeSlider
               componentId="publishFilter"
-              dataField="publishedYear"
+              dataField="year"
               title="Year of Publication"
               filterLabel="published"
               range={{
@@ -102,10 +102,10 @@ class App extends Component {
               onData={(res)=>(
                 {
                   "image": "https://source.unsplash.com/random",
-                  "title": res.titles || " ",
+                  "title": res.title || " ",
                   "description":  /*res.average_rating + " ★ " +*/
-                  "<span style='float:right;margin-right:5px;'>Pub: " + res.publishedYear+ "</span><br/><br/><div class='result-author' title='" + res.artists + "'>by " + res.artists + "</div>",
-                  "url": "https://google.com/search?q=" + res.titles
+                  "<span style='float:right;margin-right:5px;'>Pub: " + res.year+ "</span><br/><br/><div class='result-author' title='" + res.artist + "'>by " + res.artist + "</div>",
+                  "url": "https://google.com/search?q=" + res.title
                 }
               )}
               className="result-data"
